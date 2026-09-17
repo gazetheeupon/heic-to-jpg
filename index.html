@@ -98,6 +98,24 @@
     <p class="privacy"><strong>How this works:</strong> this page uses an open-source WebAssembly build of libheif to decode HEIC/HEIF images directly in your browser tab, then re-encodes them to JPG or PNG using the browser's own canvas. Your photos are never sent to any server.</p>
   </div>
 
+
+  <div class="card faq">
+    <h2>Troubleshooting</h2>
+    <details><summary>The converted image looks washed out or the colors look slightly off</summary>
+      <p>Some HEIC photos are saved with a wide-gamut (Display P3) color profile. Converting to JPG re-encodes through the browser's canvas, which can shift color slightly at lower quality settings. Try moving the quality slider closer to 1 for the most faithful result.</p>
+    </details>
+    <details><summary>I selected a file but nothing converts</summary>
+      <p>Confirm the file is actually a <code>.heic</code>/<code>.heif</code> container. Some cameras and apps label an already-JPEG file with a <code>.HEIC</code> extension, and a Live Photo is really two separate files (a HEIC image plus a <code>.mov</code> clip) &mdash; make sure you picked the image, not the video half.</p>
+    </details>
+  </div>
+
+  <div class="card cli">
+    <h2>Prefer the command line?</h2>
+    <div class="cli-block">magick input.heic output.jpg</div>
+    <p class="privacy">Needs an ImageMagick build with HEIC/HEIF delegate support. On a Mac, <code>sips</code> also works out of the box: <code>sips -s format jpeg input.heic --out output.jpg</code>.</p>
+  </div>
+
+
   <div id="ad-slot" data-aads-unit="2455555"></div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
